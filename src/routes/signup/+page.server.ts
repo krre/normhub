@@ -1,3 +1,5 @@
+import sha1 from "sha1";
+
 export const actions = {
     default: async ({ cookies, request }) => {
         const data = await request.formData();
@@ -6,7 +8,7 @@ export const actions = {
             sign: data.get('sign'),
             name: data.get('name'),
             email: data.get('email'),
-            password: data.get('password')
+            password: sha1(data.get('password') as string)
         };
 
         console.log(user)
