@@ -3,6 +3,7 @@ export const actions = {
         const data = await request.formData();
 
         const user = {
+            sign: data.get('sign'),
             name: data.get('name'),
             email: data.get('email'),
             password: data.get('password')
