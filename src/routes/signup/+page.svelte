@@ -15,7 +15,7 @@
 		<input type="email" name="email" required placeholder="Email" />
 		<input type="password" name="password" required placeholder="Password" />
 		<div>
-			<button> Sign up </button>
+			<button>Sign up</button>
 		</div>
 	</form>
 </div>
