@@ -1,4 +1,4 @@
-import sha1 from "sha1";
+import shajs from 'sha.js';
 
 export const actions = {
     default: async ({ cookies, request }) => {
@@ -8,7 +8,7 @@ export const actions = {
             sign: data.get('sign'),
             name: data.get('name'),
             email: data.get('email'),
-            password: sha1(data.get('password') as string)
+            password: shajs('sha256').update(data.get('password') as string).digest('hex')
         };
 
         console.log(user)
