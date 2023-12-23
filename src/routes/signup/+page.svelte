@@ -10,8 +10,8 @@
 
 <div>
 	<form use:enhance method="post">
-		<input type="text" name="sign" required placeholder="Sign" />
-		<input type="text" name="name" required placeholder="Name" />
+		<input type="text" name="login" required placeholder="Login" />
+		<input type="text" name="full_name" required placeholder="Full name" />
 		<input type="email" name="email" required placeholder="Email" />
 		<input type="password" name="password" required placeholder="Password" />
 		<div>
