@@ -14,6 +14,7 @@
 		<input type="text" name="full_name" required placeholder="Full name" />
 		<input type="email" name="email" required placeholder="Email" />
 		<input type="password" name="password" required placeholder="Password" />
+		<input type="password" name="confirm_password" required placeholder="Confirm password" />
 		<div>
 			<button>Sign up</button>
 		</div>
