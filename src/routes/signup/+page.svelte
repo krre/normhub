@@ -25,7 +25,7 @@
 	form {
 		display: flex;
 		flex-direction: column;
-		max-width: 350px;
+		max-width: 20em;
 		row-gap: 1em;
 		margin: 0 auto;
 	}
