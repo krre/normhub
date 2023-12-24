@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	const title = 'Sign up';
 </script>
 
 <svelte:head>
-	<title>Sign up</title>
+	<title>{title}</title>
 </svelte:head>
 
 <div class="centered">
-	<h1>Sign up</h1>
+	<h1>{title}</h1>
 	<form method="POST" use:enhance>
 		<input type="text" name="login" required placeholder="Login" />
 		<input type="text" name="full-name" required placeholder="Full name" />
@@ -15,7 +16,7 @@
 		<input type="password" name="password" required placeholder="Password" />
 		<input type="password" name="confirm-password" required placeholder="Confirm password" />
 		<div>
-			<button>Sign up</button>
+			<button>{title}</button>
 		</div>
 	</form>
 </div>
