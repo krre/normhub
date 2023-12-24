@@ -2,19 +2,37 @@ import { error } from '@sveltejs/kit';
 
 const base = 'http://localhost:3000';
 
-async function send({ method, path, data, token }) {
-    const opts = { method, headers: {} };
+interface Request {
+    method: string
+    path: string
+    data?: object
+    token?: string
+}
 
-    if (data) {
+interface Headers {
+    [key: string]: string
+}
+
+interface Options {
+    method: string
+    headers: Headers
+    body?: string
+}
+
+async function send(request: Request) {
+    const opts: Options = { method: request.method, headers: {} };
+
+    if (request.data) {
         opts.headers['Content-Type'] = 'application/json';
-        opts.body = JSON.stringify(data);
+        opts.body = JSON.stringify(request.data);
     }
 
-    if (token) {
-        opts.headers['Authorization'] = `Token ${token}`;
+    if (request.token) {
+        opts.headers['Authorization'] = `Bearer ${request.token}`;
     }
 
-    const res = await fetch(`${base}/${path}`, opts);
+    const res = await fetch(`${base}/${request.path}`, opts);
+
     if (res.ok || res.status === 422) {
         const text = await res.text();
         return text ? JSON.parse(text) : {};
@@ -23,18 +41,18 @@ async function send({ method, path, data, token }) {
     error(res.status);
 }
 
-// export function get(path, token) {
-// 	return send({ method: 'GET', path, token });
-// }
+export function get(path: string, token?: string) {
+    return send({ method: 'GET', path, token });
+}
 
-// export function del(path, token) {
-// 	return send({ method: 'DELETE', path, token });
-// }
+export function del(path: string, token?: string) {
+    return send({ method: 'DELETE', path, token });
+}
 
-// export function post(path, data, token) {
-// 	return send({ method: 'POST', path, data, token });
-// }
+export function post(path: string, data: object, token?: string) {
+    return send({ method: 'POST', path, data, token });
+}
 
-// export function put(path, data, token) {
-// 	return send({ method: 'PUT', path, data, token });
-// }
+export function put(path: string, data: object, token?: string) {
+    return send({ method: 'PUT', path, data, token });
+}

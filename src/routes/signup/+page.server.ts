@@ -1,4 +1,5 @@
 import shajs from 'sha.js';
+import * as api from '$lib/api.js';
 import { redirect } from '@sveltejs/kit';
 
 export const actions = {
@@ -12,7 +13,7 @@ export const actions = {
             password: shajs('sha256').update(data.get('password') as string).digest('hex')
         };
 
-        console.log("user", user)
+        api.post('account', user)
         throw redirect(307, "/")
     }
 };
