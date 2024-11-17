@@ -1,2 +1,2 @@
-# Norm Web
+# NormHub
 Norm repository frontend.
